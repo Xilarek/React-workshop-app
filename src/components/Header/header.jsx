@@ -11,15 +11,15 @@ export default class Header extends React.Component {
         const incomeArr = history.filter((item) => item.article === 'доход');
         const expensesArr = history.filter((item) => item.article === 'расход');
         
-            const expenses = expensesArr.map((item) => item.sum);
-            let expensesSum = expenses.reduce(function(a, b)  {
-                    return a + b
-            }, 0)
+        const expenses = expensesArr.map((item) => item.sum);
+        let   expensesSum = expenses.reduce(function(a, b)  {
+                return a + b
+        }, 0)
         
-            const income = incomeArr.map((item) => item.sum);
-            let incomeSum = income.reduce(function(a, b)  {
-                    return a + b
-            }, 0)
+        const income = incomeArr.map((item) => item.sum);
+        let   incomeSum = income.reduce(function(a, b)  {
+                return a + b
+        }, 0)
 
         const balance = incomeSum - expensesSum;
 
