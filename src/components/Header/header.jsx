@@ -23,15 +23,13 @@ export default class Header extends React.Component {
         const balance = incomeSum - expensesSum;
 
         return (
-            <>
-                <section className="total">
-                        <Balance total={balance}/>
-                    <div className="total__main">
-                        <TotalIncome total={incomeSum}/>
-                        <TotalExpenses total={expensesSum}/>
-                    </div>
-                </section>
-            </>
+            <section className="total">
+                    <Balance total={balance}/>
+                <div className="total__main">
+                    <TotalIncome total={incomeSum}/>
+                    <TotalExpenses total={expensesSum}/>
+                </div>
+            </section>
         )
     }
 }
