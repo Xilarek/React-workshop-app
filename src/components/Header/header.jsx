@@ -2,7 +2,6 @@ import React from 'react';
 import Balance from '../balanсe';
 import TotalIncome from '../total-income';
 import TotalExpenses from '../total-expenses';
-import './header.css';
 
 export default class Header extends React.Component {
     render() {

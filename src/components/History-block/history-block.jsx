@@ -1,7 +1,6 @@
 import React from 'react';
 import ItemIncome from '../history-item-income';
 import ItemExpenses from '../history-item-expenses';
-import './history-block.css';
 
 export default class History extends React.Component {
     
