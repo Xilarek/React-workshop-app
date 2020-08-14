@@ -1,27 +1,46 @@
 import React from 'react';
+import Balance from '../balanсe';
+import TotalIncome from '../total-income';
+import TotalExpenses from '../total-expenses';
 import './header.css';
 
 export default class Header extends React.Component {
     render() {
+        const { history } = this.props;
+
+        let incomeSum = 0;
+        let expensesSum = 0;
+        
+        const incomeArr = history.filter((item) => item.article === 'доход');
+        const expensesArr = history.filter((item) => item.article === 'расход');
+        
+        
+        if (expensesArr.length !== 0) {
+            const expenses = expensesArr.map((item) => item.sum);
+                  expensesSum = expenses.reduce(function(a, b)  {
+                        return a + b
+            })
+        } else {
+            expensesSum = 0;
+        }
+
+        if (incomeArr.length !== 0) {
+            const income = incomeArr.map((item) => item.sum);
+                   incomeSum = income.reduce(function(a, b)  {
+                        return a + b
+            })
+        } else  {
+            incomeSum = 0;
+        }
+
+        const balance = incomeSum - expensesSum;
+
         return (
             <section className="total">
-                <header className="total__header">
-                    <h3>Баланс</h3>
-                    <p className="total__balance">0 ₽</p>
-                </header>
+                <Balance total={balance}/>
                 <div className="total__main">
-                    <div className="total__main-item total__income">
-                        <h4>Доходы</h4>
-                        <p className="total__money total__money-income">
-                            +0 ₽
-                        </p>
-                    </div>
-                    <div className="total__main-item total__expenses">
-                        <h4>Расходы</h4>
-                        <p className="total__money total__money-expenses">
-                            -0 ₽
-                        </p>
-                    </div>
+                    <TotalIncome total={incomeSum}/>
+                    <TotalExpenses total={expensesSum}/>
                 </div>
             </section>
         )
